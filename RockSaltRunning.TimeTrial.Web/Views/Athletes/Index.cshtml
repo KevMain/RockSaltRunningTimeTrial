@@ -1,0 +1,59 @@
+﻿@model RockSaltRunning.TimeTrial.Web.Models.AthleteViewModel
+<div class="row">
+    <div class="col-md-4">
+        <h2 id="tables-bordered">
+            @Html.ActionLink("Back To Events", "Index", "Events", new { }, new { @class = "btn btn-primary btn-default" })
+        </h2>
+    </div>
+    <div class="col-md-8">
+        <h2 id="tables-bordered">@Model.Name (@Model.ParkrunNumber)</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">Statistics</div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>Events</dt>
+                    <dd>@Model.EventCount</dd>
+                    <dt>PB</dt>
+                    <dd>@Model.BestTime</dd>
+                    <dt>Best Position</dt>
+                    <dd>@Model.BestPosition</dd>
+                </dl>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="bs-example" data-example-id="bordered-table">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Position</th>
+                    <th>Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                @{
+                    foreach (var e in Model.Events)
+                    {
+                        <tr>
+                            <td>@e.Name</td>
+                            <td>@e.Position</td>
+                            <td>@e.Time</td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/app")
+}

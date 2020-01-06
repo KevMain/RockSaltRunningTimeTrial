@@ -1,0 +1,38 @@
+﻿@model RockSaltRunning.TimeTrial.Web.Models.AthletesListViewModel
+<div class="row">
+    <div class="col-md-12">
+        <h2 id="tables-bordered">Athletes</h2>
+        <div class="bs-example" data-example-id="bordered-table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Parkrun No</th>
+                        <th>Name</th>
+                        <th>Runs</th>
+                        <th>Best Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var result in Model.Athletes)
+                        {
+                            <tr>
+                                <td>@result.ParkrunNumber</td>
+                                <td>
+                                    @Html.ActionLink(@result.Name, "Index", "Athletes", new { id = @result.Id }, new { })
+                                </td>
+                                <td>@result.Runs</td>
+                                <td>@result.BestTime</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/app")
+}

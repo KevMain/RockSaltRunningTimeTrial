@@ -1,0 +1,72 @@
+﻿
+@model RockSaltRunning.TimeTrial.Web.Models.ResultsViewModel
+<div class="row">
+    <div class="col-md-4">
+        <h2 id="tables-bordered">
+            @Html.ActionLink("Back To Events", "Index", "Events", new { }, new { @class = "btn btn-primary btn-default" })
+        </h2>
+    </div>
+    <div class="col-md-8">
+        <h2 id="tables-bordered">Final Results</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">@Model.Event.Name</div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>Event Date</dt>
+                    <dd>@Model.Event.Date</dd>
+                    <dt>Location</dt>
+                    <dd>@Model.Event.Location</dd>
+                    <dt>Distance</dt>
+                    <dd>@Model.Event.Distance</dd>
+                    <dt>Participants</dt>
+                    <dd>@Model.Event.Participants</dd>
+                </dl>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="bs-example" data-example-id="bordered-table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Name</th>
+                        <th>Time</th>
+                        <th>±</th>
+                        <th>Note</th>
+                        <th>Runs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var result in Model.Results)
+                        {
+                            <tr>
+                                <td>@result.Position</td>
+                                <td>
+                                    @Html.ActionLink(@result.Name, "Index", "Athletes", new { id = @result.Id }, new{})
+                                </td>
+                                <td>@result.Time</td>
+                                <td>@result.Split</td>
+                                <td>@result.Note</td>
+                                <td>@result.Runs</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- /ko -->
+
+@section Scripts{
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/app")
+}

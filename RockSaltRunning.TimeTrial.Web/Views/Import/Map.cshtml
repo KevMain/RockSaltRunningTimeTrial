@@ -1,0 +1,73 @@
+﻿@model RockSaltRunning.TimeTrial.Web.Models.ImportViewModel
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 id="tables-bordered">Event Results (@Model.Date)</h2>
+        <div class="bs-example" data-example-id="bordered-table">
+            @using (Html.BeginForm("Results", "Import", new { id = @Model.Id }))
+            {
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Time</th>
+                            <th>Athlete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var result in Model.TimerResults)
+                            {
+                                <tr>
+                                    <td>@result.Position</td>
+                                    <td>@result.Time</td>
+                                    <td>
+
+                                        <select name="@result.Id">
+                                            <option>-- Not Assigned --</option>
+                                            @foreach (var athlete in Model.Athletes)
+                                            {
+                                                if (result.AthleteId == athlete.Id)
+                                                {
+                                                    <option value="@athlete.Id" selected="selected">@athlete.Name (@athlete.ParkrunNumber)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@athlete.Id">@athlete.Name (@athlete.ParkrunNumber)</option>
+                                                }
+                                            }
+                                        </select>
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <input type="submit" value="Update Results" class="btn btn-primary btn-default" />
+            }
+            <br/>
+            @if (@Model.IsMappingComplete)
+            {
+                @Html.ActionLink("Publish Results", "Publish", "Import", new { id = @Model.Id }, new { @class = "btn btn-primary btn-default" })
+            }
+            </div>
+    </div>
+</div>
+@if (!@Model.IsScannerUploaded)
+{
+    <div class="jumbotron">
+        <p class="lead">Upload scanner results.</p>
+        <p>
+            @using (Html.BeginForm("Scanner", "Import", new {id = @Model.Id}, FormMethod.Post, new {enctype = "multipart/form-data"}))
+            {
+                <div class="form-group">
+                    <label for="uploadedFile">Scanner Results</label>
+                    <input type="file" class="form-control" id="uploadedFile" name="uploadedFile" placeholder="Scanner Results">
+                </div>
+                <button type="submit" class="btn btn-primary">Import scanner results</button>
+            }
+        </p>
+    </div>
+}

@@ -1,0 +1,36 @@
+﻿@model RockSaltRunning.TimeTrial.Web.Models.EventsViewModel
+<div class="row">
+    <div class="col-md-12">
+        <h2 id="tables-bordered">Events</h2>
+        <div class="bs-example" data-example-id="bordered-table">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Participants</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @{
+                    foreach (var e in Model.Events)
+                    {
+                        <tr>
+                            <td>@e.Name (@e.Date)</td>
+                            <td>@e.Participants</td>
+                            <td>
+                                @Html.ActionLink("View Results", "Results", "Events", new { id = @e.Id }, new { @class = "btn btn-primary btn-default" })
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/app")
+}

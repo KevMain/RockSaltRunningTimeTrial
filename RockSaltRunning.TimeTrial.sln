@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockSaltRunning.TimeTrial.Web", "RockSaltRunning.TimeTrial.Web\RockSaltRunning.TimeTrial.Web.csproj", "{EF837690-98DC-4A8E-8DD0-35EB49041EED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF837690-98DC-4A8E-8DD0-35EB49041EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF837690-98DC-4A8E-8DD0-35EB49041EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF837690-98DC-4A8E-8DD0-35EB49041EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF837690-98DC-4A8E-8DD0-35EB49041EED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AFAE90A5-C372-42C5-B52E-4845B172F2E5}
+	EndGlobalSection
+EndGlobal

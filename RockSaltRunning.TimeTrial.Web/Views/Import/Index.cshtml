@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Import Result";
+}
+
+<div class="jumbotron">
+    <p class="lead">Upload timer results.</p>
+    <p>
+        @using (Html.BeginForm("Upload", "Import", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <label for="eventDate">Event Date</label>
+                <input type="text" class="form-control" id="eventDate" name="eventDate" aria-describedby="eventDateHelp" placeholder="Enter Event Date">
+            </div>
+            <div class="form-group">
+                <label for="uploadedFile">Timer Results</label>
+                <input type="file" class="form-control" id="uploadedFile" name="uploadedFile" placeholder="Timer Results">
+            </div>
+            <button type="submit" class="btn btn-primary">Import timer results</button>
+        }
+    </p>
+</div>
