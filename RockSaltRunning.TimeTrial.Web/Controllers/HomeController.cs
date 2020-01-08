@@ -77,8 +77,8 @@ namespace RockSaltRunning.TimeTrial.Web.Controllers
                     _db.Events.Add(new Event
                     {
                         Date = dt,
-                        Distance = "1.9 Miles",
-                        Location = "Carey Park",
+                        Distance = "1 Mile",
+                        Location = "Winsford",
                         Name = "Time Trial"
                     });
                 }
